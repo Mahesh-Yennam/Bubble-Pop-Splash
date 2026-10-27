@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+  <defs>
+    <radialGradient id="cyanGrad" cx="35%" cy="35%" r="65%">
+      <stop offset="0%" stop-color="#a5f3fc"/>
+      <stop offset="40%" stop-color="#06b6d4"/>
+      <stop offset="100%" stop-color="#0891b2"/>
+    </radialGradient>
+    <radialGradient id="purpleGrad" cx="35%" cy="35%" r="65%">
+      <stop offset="0%" stop-color="#f5d0fe"/>
+      <stop offset="40%" stop-color="#c084fc"/>
+      <stop offset="100%" stop-color="#9333ea"/>
+    </radialGradient>
+    <radialGradient id="pinkGrad" cx="35%" cy="35%" r="65%">
+      <stop offset="0%" stop-color="#fbcfe8"/>
+      <stop offset="40%" stop-color="#f43f5e"/>
+      <stop offset="100%" stop-color="#be123c"/>
+    </radialGradient>
+    <radialGradient id="goldGrad" cx="35%" cy="35%" r="65%">
+      <stop offset="0%" stop-color="#fef08a"/>
+      <stop offset="40%" stop-color="#f59e0b"/>
+      <stop offset="100%" stop-color="#b45309"/>
+    </radialGradient>
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    </filter>
+  </defs>
+
+  <rect width="64" height="64" rx="16" fill="#090d16"/>
+  <rect x="2" y="2" width="60" height="60" rx="14" stroke="#1e293b" stroke-width="2"/>
+
+  <!-- Background sparkle particles -->
+  <circle cx="16" cy="18" r="1.5" fill="#38bdf8" opacity="0.6"/>
+  <circle cx="48" cy="14" r="2" fill="#f43f5e" opacity="0.5"/>
+  <circle cx="50" cy="50" r="1.5" fill="#a855f7" opacity="0.6"/>
+
+  <!-- Clustered bubbles -->
+  <g filter="url(#glow)">
+    <!-- Top Left Cyan Bubble -->
+    <circle cx="24" cy="24" r="12" fill="url(#cyanGrad)"/>
+    <ellipse cx="20" cy="20" rx="3.5" ry="2" fill="#ffffff" opacity="0.75" transform="rotate(-30 20 20)"/>
+
+    <!-- Top Right Purple Bubble -->
+    <circle cx="42" cy="24" r="12" fill="url(#purpleGrad)"/>
+    <ellipse cx="38" cy="20" rx="3.5" ry="2" fill="#ffffff" opacity="0.75" transform="rotate(-30 38 20)"/>
+
+    <!-- Bottom Center Pink Bubble -->
+    <circle cx="33" cy="40" r="13" fill="url(#pinkGrad)"/>
+    <ellipse cx="29" cy="35" rx="4" ry="2.2" fill="#ffffff" opacity="0.8" transform="rotate(-30 29 35)"/>
+  </g>
+</svg>

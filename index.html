@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-RFQ8M0VSFN"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-RFQ8M0VSFN');
+  </script>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bubble Pop Splash - Arcade Color Match Shooter | Gamility</title>
+  <meta name="description" content="Play Bubble Pop Splash online. Aim and fire colored bubbles to form clusters of 3 or more and trigger satisfying cascade pops in this free web game.">
+  <meta name="keywords" content="bubble pop, bubble shooter, color match, arcade game, puzzle game, casual game, gamility">
+  <meta name="theme-color" content="#06b6d4">
+
+    <!-- Open Graph / Social Sharing -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Bubble Pop Splash - Arcade Color Match Shooter | Gamility">
+  <meta property="og:description" content="Play Bubble Pop Splash online. Aim and fire colored bubbles to form clusters of 3 or more and trigger satisfying cascade pops in this free web game.">
+  <meta property="og:image" content="preview.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:alt" content="Bubble Pop Splash - Arcade Color Match Shooter | Gamility">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Bubble Pop Splash - Arcade Color Match Shooter | Gamility">
+  <meta name="twitter:description" content="Play Bubble Pop Splash online. Aim and fire colored bubbles to form clusters of 3 or more and trigger satisfying cascade pops in this free web game.">
+  <meta name="twitter:image" content="preview.png">
+
+  <link rel="icon" type="image/svg+xml" href="./favicon.svg">
+  <link rel="manifest" href="./site.webmanifest">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./style.css">
+
+  <!-- Schema.org Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Bubble Pop Splash",
+    "url": "https://mahesh-yennam.github.io/Gamility/games/bubble-pop-splash/",
+    "applicationCategory": "GameApplication",
+    "operatingSystem": "All",
+    "genre": ["Casual", "Arcade", "Puzzle", "Match-3"],
+    "description": "Hexagonal grid bubble shooter featuring wall-bounce trajectory prediction, cluster popping, floater cascades, and synthesized audio."
+  }
+  </script>
+</head>
+<body>
+  <!-- Top Gamility Ribbon for Standalone & Repos Navigation -->
+  <header class="top-nav-ribbon" role="banner">
+    <a href="https://mahesh-yennam.github.io/Gamility/" class="ribbon-brand" title="Gamility Home">
+      <svg width="24" height="24" viewBox="0 0 40 40" fill="none" aria-hidden="true">
+        <path d="M20 4L4 12V28L20 36L36 28V12L20 4Z" stroke="#38bdf8" stroke-width="2.5" stroke-linejoin="round"/>
+        <path d="M20 12L12 16V24L20 28L28 24V16L20 12Z" fill="#0284c7" fill-opacity="0.85"/>
+        <circle cx="20" cy="20" r="3" fill="#ffffff"/>
+      </svg>
+      <span>Gamility Arcade</span>
+    </a>
+    <a href="https://mahesh-yennam.github.io/Gamility/games.html" class="ribbon-back-btn" title="Back to All Games">
+      <span>←</span> Back to Games
+    </a>
+  </header>
+
+  <!-- Main Game Stage -->
+  <main class="game-wrapper" id="gameWrapper">
+    <!-- Header with Live HUD -->
+    <header class="arcade-header">
+      <div class="game-title-badge">
+        <h1>Bubble Pop Splash</h1>
+        <span class="game-mode-subtitle" id="modeSubtitle">Aim & Match 3 • Clear the Grid</span>
+      </div>
+      <div class="hud-panel" aria-label="Game HUD">
+        <div class="hud-stat">
+          <span class="hud-label">Score</span>
+          <span id="scoreVal" class="hud-val stat-cyan">0</span>
+        </div>
+        <div class="hud-stat">
+          <span class="hud-label">High Score</span>
+          <span id="highScoreVal" class="hud-val stat-gold">0</span>
+        </div>
+        <div class="hud-stat">
+          <span class="hud-label">Level</span>
+          <span id="levelVal" class="hud-val stat-green">1</span>
+        </div>
+        <div class="hud-stat">
+          <span class="hud-label">Fouls</span>
+          <span id="foulsVal" class="hud-val stat-pink">5 🫧</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- Controls Toolbar -->
+    <div class="controls-toolbar">
+      <div class="toolbar-btn-group">
+        <button id="swapBtn" class="tool-icon-btn highlight-btn" type="button" title="Swap Current & Next Bubble (S)">
+          <span>🔄</span> Swap (S)
+        </button>
+        <button id="newGameBtn" class="tool-icon-btn" type="button" title="Start New Game">
+          <span>✨</span> New Game
+        </button>
+        <button id="pauseBtn" class="tool-icon-btn" type="button" title="Pause Game (P)">
+          <span>⏸️</span> Pause
+        </button>
+        <button id="muteBtn" class="tool-icon-btn" type="button" title="Toggle Sound">
+          <span>🔊</span> Sound
+        </button>
+      </div>
+    </div>
+
+    <!-- Bubble Shooter Canvas Stage -->
+    <div class="canvas-container">
+      <canvas id="gameCanvas" width="480" height="640" aria-label="Bubble Pop Splash Battlefield"></canvas>
+
+      <!-- Start Mission Overlay -->
+      <div id="startOverlay" class="arcade-overlay">
+        <div class="tactical-badge">ARCADE PUZZLE</div>
+        <h2 class="overlay-title">Bubble Pop Splash</h2>
+        <p class="overlay-subtitle" id="startSubtitle">Aim and launch colored bubbles into the ceiling grid. Connect 3 or more of the same color to burst clusters and trigger cascading drops!</p>
+        <div style="display: flex; flex-direction: column; gap: 0.6rem; align-items: center;">
+          <button id="startBtn" class="arcade-btn" type="button">
+            <span>🎯</span> Start Popping
+          </button>
+          <button id="resetProgressBtn" class="tool-icon-btn hidden" type="button" style="font-size: 0.78rem; padding: 0.35rem 0.8rem;">
+            <span>🔄</span> Restart from Level 1
+          </button>
+        </div>
+      </div>
+
+      <!-- Game Over Overlay -->
+      <div id="gameOverOverlay" class="arcade-overlay hidden">
+        <div class="tactical-badge red-badge">CEILING BREACHED</div>
+        <h2 class="overlay-title red-title">Game Over</h2>
+        <div class="final-score-box">
+          <p>Final Score: <strong id="finalScore" class="stat-cyan">0</strong></p>
+          <p>Current Level: <strong id="finalLevel" class="stat-green">1</strong></p>
+          <p>Bubbles Popped: <strong id="finalPopped" class="stat-gold">0</strong></p>
+        </div>
+        <div style="display: flex; gap: 0.6rem; flex-wrap: wrap; justify-content: center;">
+          <button id="restartBtn" class="arcade-btn" type="button">
+            <span>🔄</span> Retry Level
+          </button>
+          <button id="gameOverResetBtn" class="tool-icon-btn" type="button">
+            <span>✨</span> Restart from Level 1
+          </button>
+        </div>
+      </div>
+
+      <!-- Level Victory Overlay -->
+      <div id="victoryOverlay" class="arcade-overlay hidden">
+        <div class="tactical-badge gold-badge">GRID CLEARED</div>
+        <h2 class="overlay-title gold-title">Stage Cleared!</h2>
+        <p class="overlay-subtitle">Incredible accuracy! All clusters have been eliminated.</p>
+        <div class="final-score-box">
+          <p>Current Score: <strong id="victoryScore" class="stat-gold">0</strong></p>
+          <p>Clear Bonus: <strong class="stat-green">+1,000 pts</strong></p>
+        </div>
+        <button id="nextLevelBtn" class="arcade-btn" type="button">
+          <span>🚀</span> Next Level
+        </button>
+      </div>
+    </div>
+
+    <!-- Launcher Deck Preview Bar -->
+    <div class="deck-preview-bar">
+      <div class="deck-item">
+        <span class="deck-label">Active Shot</span>
+        <div class="deck-bubble-slot" id="currentBubblePreview">
+          <div class="preview-bubble" id="currentBubbleCircle"></div>
+        </div>
+      </div>
+      <button id="deckSwapBtn" class="deck-swap-action" type="button" title="Swap loaded bubble">
+        <span>⇄</span> Swap (S)
+      </button>
+      <div class="deck-item">
+        <span class="deck-label">Next in Deck</span>
+        <div class="deck-bubble-slot" id="nextBubblePreview">
+          <div class="preview-bubble" id="nextBubbleCircle"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Instructions & Rules Card -->
+    <section class="game-instructions-card" aria-label="Bubble Pop Splash Instructions">
+      <h3>🫧 Game Rules & Scoring Mechanics</h3>
+      <div class="legend-grid">
+        <div class="legend-item">
+          <span class="legend-badge">🎯</span>
+          <div><strong>Aim & Ricochet:</strong> Move your mouse or drag your finger to aim the pointer. Use side-wall bounces to reach high, tucked-away bubbles.</div>
+        </div>
+        <div class="legend-item">
+          <span class="legend-badge">💥</span>
+          <div><strong>Match-3 Cluster:</strong> Match 3 or more bubbles of the same color to pop them. Each popped bubble awards points and builds your combo.</div>
+        </div>
+        <div class="legend-item">
+          <span class="legend-badge">💧</span>
+          <div><strong>Floater Drops:</strong> Any bubbles cut off from the ceiling will drop and award huge cascade multipliers. Clear the anchors!</div>
+        </div>
+        <div class="legend-item">
+          <span class="legend-badge">⚠️</span>
+          <div><strong>Ceiling Descends:</strong> Every 5 shots without a pop, the ceiling shifts down. Prevent bubbles from touching the bottom dashed red line.</div>
+        </div>
+      </div>
+      <p style="margin-top: 1rem; font-size: 0.85rem; color: #94a3b8; line-height: 1.5;">
+        <strong>Desktop Controls:</strong> Move mouse to aim, <strong>Left Click</strong> to fire. Press <strong>S</strong> to swap bubbles and <strong>P</strong> to Pause.<br>
+        <strong>Mobile Controls:</strong> Drag finger across the battlefield to position the trajectory line, then lift finger to fire.
+      </p>
+    </section>
+  </main>
+
+  <script src="./game.js"></script>
+</body>
+</html>
